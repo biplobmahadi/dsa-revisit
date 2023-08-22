@@ -24,6 +24,14 @@ def mergeTwoSorted(arr1, arr2):
     return newArr
 
 
-arr1 = []
+arr1 = [5, 7, 12, 32, 43]
 arr2 = [2, 4, 6]
-print(mergeTwoSorted(arr1, arr2))
+print(mergeTwoSorted(arr1, arr2)) # O(m+n), O(m+n)
+
+
+def merged(arr1, arr2):
+    arr3: list = arr1 + arr2
+    arr3.sort() # O(m+n log(m+n)), O(m+n)
+    return arr3
+
+print(merged(arr1, arr2))
