@@ -1,1 +1,1 @@
-print('hi man')
+print('start revisit dsa using js in python!')
