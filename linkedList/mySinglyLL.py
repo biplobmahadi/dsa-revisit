@@ -59,6 +59,18 @@ class MySinglyLL:
             self.length -= 1
         return self.length
     
+    def reverse(self):
+        current = self.head
+        hold = None
+        self.tail = current
+        while current is not None:
+            nextNode = current.next
+            current.next = hold
+            hold = current
+            current = nextNode
+        self.head = hold
+        return None
+
     def __str__(self):
         return f'len is: {self.length}'
 
@@ -72,5 +84,6 @@ mysinglyLL.insert(2, 84)
 mysinglyLL.insert(6, 843)
 mysinglyLL.remove(2)
 
+mysinglyLL.reverse()
 print(mysinglyLL)
 print(mysinglyLL.print())
