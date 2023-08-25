@@ -52,6 +52,65 @@ class BST:
                 current = current.right
         return None
     
+    def remove(self, val):
+        parent = None
+        current = self.root
+        while current:
+            if current.val == val:
+                if not current.left and not current.right:
+                    if parent.left == current:
+                        parent.left = None
+                    else: 
+                        parent.right = None
+                    current = None
+                elif current.left is None and current.right:
+                    if parent.left == current:
+                        parent.left = current.right
+                    else: 
+                        parent.right = current.right
+                    current = None
+                elif current.left and current.right is None:
+                    if parent.left == current:
+                        parent.left = current.left
+                    else: 
+                        parent.right = current.left
+                    current = None
+                else:
+                    newTree = current.right
+                    if newTree.left:
+                        newParent = newTree
+                        newCurrent = newTree.left
+                        while newCurrent.left:
+                            newParent = newCurrent
+                            newCurrent = newCurrent.left
+                        if newCurrent.right:
+                            newParent.left = newCurrent.right
+                        else:
+                            newParent.left = None
+                        if parent.left == current:
+                            parent.left = newCurrent
+                        else:
+                            parent.right = newCurrent
+                        newCurrent.right = newTree
+                        if current.left:
+                            newCurrent.left = current.left
+                    else:
+                        newCurrent = current.right
+                        if parent.left == current:
+                            parent.left = newCurrent
+                        else: 
+                            parent.right = newCurrent
+                        if current.left:
+                            newCurrent.left = current.left
+                    current = None
+            else:
+                parent = current
+                if val > current.val:
+                    current = current.right
+                else:
+                    current = current.left
+        
+
 def display(node):
     tree_dict = bst._display_helper(node)
     pprint(tree_dict)
@@ -65,7 +124,15 @@ bst.insert(6)
 bst.insert(26)
 bst.insert(170)
 bst.insert(15)
+bst.insert(180)
+bst.insert(160)
+bst.insert(150)
+bst.insert(145)
+bst.insert(146)
+bst.insert(147)
 
-display(bst.lookup(20))
+# display(bst.lookup(20))
+
+bst.remove(26)
 
 display(bst.root)
