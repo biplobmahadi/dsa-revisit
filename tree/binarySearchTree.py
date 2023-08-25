@@ -41,16 +41,16 @@ class BST:
                         return self.root
                     current = current.right
                     
-    # def lookup(self, val):
-    #     current = self.root
-    #     while current:
-    #         if current.val == val:
-    #             return current
-    #         elif current.val > val:
-    #             current = current.left
-    #         else: 
-    #             current = current.right
-    #     return None
+    def lookup(self, val):
+        current = self.root
+        while current:
+            if current.val == val:
+                return current
+            elif current.val > val:
+                current = current.left
+            else: 
+                current = current.right
+        return None
     
 # def display(node):
 #     tree_dict = bst._display_helper(node)
