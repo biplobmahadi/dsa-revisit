@@ -13,14 +13,14 @@ class BST:
     def __init__(self) -> None:
         self.root = None
     
-    # def _display_helper(self, node):
-    #     if node is None:
-    #         return None
-    #     return {
-    #         'balue': node.val,
-    #         'left': self._display_helper(node.left),
-    #         'right': self._display_helper(node.right)
-    #     }
+    def _display_helper(self, node):
+        if node is None:
+            return None
+        return {
+            'balue': node.val,
+            'left': self._display_helper(node.left),
+            'right': self._display_helper(node.right)
+        }
 
     def insert(self, val):
         node = Node(val)
@@ -52,9 +52,9 @@ class BST:
                 current = current.right
         return None
     
-# def display(node):
-#     tree_dict = bst._display_helper(node)
-#     pprint(tree_dict)
+def display(node):
+    tree_dict = bst._display_helper(node)
+    pprint(tree_dict)
 
 bst = BST()
 
@@ -66,6 +66,6 @@ bst.insert(26)
 bst.insert(170)
 bst.insert(15)
 
-# display(bst.lookup(20))
+display(bst.lookup(20))
 
-# display(bst.root)
+display(bst.root)
