@@ -12,4 +12,10 @@ def fiboIterative(n):
             b = res
         return res
     
-print(fiboIterative(8))
+print(fiboIterative(10))
+
+def fiboRecursive(n):
+    if n < 2: return n
+    return fiboRecursive(n-1) + fiboRecursive(n-2)
+
+print(fiboRecursive(10))
