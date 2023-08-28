@@ -1,4 +1,5 @@
 from pprint import pprint
+from collections import deque
 
 class Node:
     def __init__(self, val) -> None:
@@ -110,6 +111,25 @@ class BST:
                 else:
                     current = current.left
         
+    def bfsIterative(self):
+        queue = deque()
+        list = []
+        queue.append(self.root)
+        
+        while len(queue):
+            popped = queue.popleft()
+            list.append(popped.val)
+            if popped.left:
+                queue.append(popped.left)
+            if popped.right:
+                queue.append(popped.right)
+        return list
+    
+    def bfsRecursive(self, queue: deque, list: list):
+        if len(queue is 0):
+            return list
+        popped = queue.popleft()
+        return None
 
 def display(node):
     tree_dict = bst._display_helper(node)
@@ -124,15 +144,18 @@ bst.insert(6)
 bst.insert(26)
 bst.insert(170)
 bst.insert(15)
-bst.insert(180)
-bst.insert(160)
-bst.insert(150)
-bst.insert(145)
-bst.insert(146)
-bst.insert(147)
+bst.insert(7)
+# bst.insert(180)
+# bst.insert(160)
+# bst.insert(150)
+# bst.insert(145)
+# bst.insert(146)
+# bst.insert(147)
 
 # display(bst.lookup(20))
 
-bst.remove(26)
+# bst.remove(26)
 
-display(bst.root)
+# display(bst.root)
+
+print(bst.bfsIterative())
