@@ -152,13 +152,13 @@ class BST:
             self.dfsInRecursive(node=node.right, list=list)
         return list
         
-    # def dfsPreRecursive(self, node:Node, list: list):
-    #     list.append(node.val)
-    #     if node.left:
-    #         self.dfsPreRecursive(node=node.left, list=list)
-    #     if node.right:
-    #         self.dfsPreRecursive(node=node.right, list=list)
-    #     return list
+    def dfsPostRecursive(self, node:Node, list: list):
+        if node.left:
+            self.dfsPostRecursive(node=node.left, list=list)
+        if node.right:
+            self.dfsPostRecursive(node=node.right, list=list)
+        list.append(node.val)
+        return list
     
 def display(node):
     tree_dict = bst._display_helper(node)
@@ -191,4 +191,5 @@ bst.insert(7)
 # q = deque()
 # q.append(bst.root)
 # print(bst.bfsRecursive(queue=q, list=[]))
-print(bst.dfsInRecursive(node=bst.root, list=[]))
+# print(bst.dfsInRecursive(node=bst.root, list=[]))
+print(bst.dfsPostRecursive(node=bst.root, list=[]))
