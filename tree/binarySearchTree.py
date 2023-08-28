@@ -160,6 +160,20 @@ class BST:
         list.append(node.val)
         return list
     
+    def dfsPreIterative(self):
+        list = []
+        stack = [self.root]
+        while len(stack):
+            popped = stack.pop()
+            list.append(popped.val)
+            if popped.right:
+                stack.append(popped.right)
+            if popped.left:
+                stack.append(popped.left)
+        return list
+    
+    
+
 def display(node):
     tree_dict = bst._display_helper(node)
     pprint(tree_dict)
@@ -192,4 +206,5 @@ bst.insert(7)
 # q.append(bst.root)
 # print(bst.bfsRecursive(queue=q, list=[]))
 # print(bst.dfsInRecursive(node=bst.root, list=[]))
-print(bst.dfsPostRecursive(node=bst.root, list=[]))
+# print(bst.dfsPostRecursive(node=bst.root, list=[]))
+print(bst.dfsPreIterative())
