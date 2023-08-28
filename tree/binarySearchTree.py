@@ -172,6 +172,23 @@ class BST:
                 stack.append(popped.left)
         return list
     
+    def dfsInIterative(self):
+        list = []
+        stack = []
+        current = self.root
+
+        while current or len(stack):
+            if current:
+                stack.append(current)
+                current = current.left
+            else:
+                popped = stack.pop()
+                list.append(popped.val)
+                if popped.right:
+                    current = popped.right
+
+        return list
+    
     def dfsPostIterative(self):
         list = []
         stack = [self.root]
@@ -225,4 +242,5 @@ bst.insert(7)
 # print(bst.dfsInRecursive(node=bst.root, list=[]))
 # print(bst.dfsPostRecursive(node=bst.root, list=[]))
 # print(bst.dfsPreIterative())
-print(bst.dfsPostIterative())
+# print(bst.dfsPostIterative())
+print(bst.dfsInIterative())
