@@ -4,6 +4,18 @@ def twoSum(nums, target):
             if nums[i] + nums[j] == target:
                 return [i, j]
 
-nums = [3,3]
+nums = [3,2,4]
 target = 6
 print(twoSum(nums, target))
+
+def twoSumOptimal(nums, target):
+    obj = {}
+    for i, x in enumerate(nums):
+        val = obj.get(x)
+        if val is not None:
+            return [i, val]
+        else:
+            reminder = target - x
+            obj[reminder] = i
+
+print(twoSumOptimal(nums, target))
