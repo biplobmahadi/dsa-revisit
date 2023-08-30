@@ -9,13 +9,11 @@ target = 6
 print(twoSum(nums, target))
 
 def twoSumOptimal(nums, target):
-    obj = {}
+    map = {}
     for i, x in enumerate(nums):
-        val = obj.get(x)
-        if val is not None:
-            return [i, val]
-        else:
-            reminder = target - x
-            obj[reminder] = i
+        complement = target - x
+        if complement in map:
+            return [i, map[complement]]
+        map[x] = i
 
 print(twoSumOptimal(nums, target))
