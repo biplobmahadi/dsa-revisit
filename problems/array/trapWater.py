@@ -17,6 +17,22 @@ def trapWater(height: list):
     
     return res
 
-height = [4,2,0,3,2,5]
+height = [0,1,0,2,1,0,1,3,2,1,2,1]
 print(trapWater(height))
 
+
+def trapWaterOptimal(height: list):
+    i, j, maxLeft, maxRight, total = 0, len(height) - 1, 0, 0, 0
+
+    while j > i:
+        if height[j] >= height[i]:
+            maxLeft = max(maxLeft, height[i])
+            total += maxLeft - height[i]
+            i += 1
+        else:
+            maxRight = max(maxRight, height[j])
+            total += maxRight - height[j]
+            j -= 1
+    return total
+
+print(trapWaterOptimal(height))
