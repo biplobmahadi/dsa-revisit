@@ -15,5 +15,21 @@ def minRemoveValidParenthesis(s: str):
             newS += x
     return newS
 
-s = 'ad'
+s = '(le(et(co(de)'
 print(minRemoveValidParenthesis(s))
+
+def minRemoveValidParenthesisGood(s: str):
+    stack, arr = [], list(s)
+    for i, x in enumerate(s):
+        if x == '(':
+            stack.append(i)
+        elif x == ')':
+            if len(stack):
+                stack.pop()
+            else:
+                arr[i] = ''
+    while len(stack):
+        arr[stack.pop()] = ''
+    return ''.join(arr)
+
+print(minRemoveValidParenthesisGood(s))
