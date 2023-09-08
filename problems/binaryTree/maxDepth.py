@@ -13,3 +13,10 @@ def maxDepth(root):
     map = {'maxCount': 1}
     dfs(root, count, map)
     return map.get('maxCount')
+
+def dfsOptimal(root, count):
+    if root == None: return count
+    return max(dfsOptimal(root.left, count+1), dfsOptimal(root.right, count+1))
+
+def maxDepthOptimal(root):
+    return dfsOptimal(root, 0)
