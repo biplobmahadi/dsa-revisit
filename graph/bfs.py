@@ -24,3 +24,28 @@ graph = [
   [2, 3],
 ]
 print(bfsWithAdjacencyList(graph))
+
+def bfsWithAdjacencyMatrix(graph):
+    list, queue, seen = [], deque([0]), {}
+    while queue:
+        popped = queue.popleft()
+        if not seen.get(popped):
+            list.append(popped)
+            seen[popped] = True
+        for i in range(len(graph[popped])):
+            if (not seen.get(i) and graph[popped][i]):
+                queue.append(i)
+    return list
+
+graphInMatrix = [
+  [0, 1, 0, 1, 0, 0, 0, 0, 0],
+  [1, 0, 0, 0, 0, 0, 0, 0, 0],
+  [0, 0, 0, 1, 0, 0, 0, 0, 1],
+  [1, 0, 1, 0, 1, 1, 0, 0, 1],
+  [0, 0, 0, 1, 0, 0, 1, 0, 0],
+  [0, 0, 0, 1, 0, 0, 0, 0, 0],
+  [0, 0, 0, 0, 1, 0, 0, 1, 0],
+  [0, 0, 0, 0, 0, 0, 1, 0, 0],
+  [0, 0, 1, 1, 0, 0, 0, 0, 0],
+]
+print(bfsWithAdjacencyMatrix(graphInMatrix))
