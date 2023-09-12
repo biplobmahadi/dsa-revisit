@@ -29,14 +29,14 @@ def dfsAdjacencyList(graph, list, seen, curr):
         dfsAdjacencyList(graph, list, seen, i)
     return list
 
-# def dfsAdjacencyMatrix(graph, list, seen, curr):
-#     if seen.get(curr): return
-#     list.append(curr)
-#     seen[curr] = True
-#     for i in range(len(graph[curr])):
-#         if graph[curr][i] == 1:
-#             dfsAdjacencyMatrix(graph, list, seen, i)
-#     return list
+def dfsAdjacencyMatrix(graph, list, seen, curr):
+    if seen.get(curr): return
+    list.append(curr)
+    seen[curr] = True
+    for i in range(len(graph[curr])):
+        if graph[curr][i] == 1:
+            dfsAdjacencyMatrix(graph, list, seen, i)
+    return list
 
-# print(dfsAdjacencyList(graph, [], {}, 0))
-# print(dfsAdjacencyMatrix(graphInMatrix, [], {}, 0))
+print(dfsAdjacencyList(graph, [], {}, 0))
+print(dfsAdjacencyMatrix(graphInMatrix, [], {}, 0))
