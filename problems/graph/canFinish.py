@@ -22,5 +22,45 @@ def canFinish(numCourses, prerequisites: list[list]):
                         queue.append(i)
     return True
 
-prerequisite = [[0,1], [0, 2], [2, 1], [1, 0]]
-print(canFinish(3, prerequisite))
+prerequisites = [[0,1], [0, 2], [2, 1], [1,0]]
+print(canFinish(3, prerequisites))
+
+def canFinishOptimalWithAdjList(numCourses, prerequisites: list[list]):
+    indegree = [0]*numCourses
+    adjList = list(map(lambda _: [], indegree))
+    for pair in prerequisites:
+        indegree[pair[0]]+=1
+        adjList[pair[1]].append(pair[0])
+    count, stack = 0, []
+    for i, x in enumerate(indegree):
+        if x == 0: stack.append(i)
+    while stack:
+        popped = stack.pop()
+        count+=1
+        for i in adjList[popped]:
+            indegree[i]-=1
+            if indegree[i] == 0:
+                stack.append(i)
+    return count == numCourses
+
+print(canFinishOptimalWithAdjList(3, prerequisites))
+
+# def canFinishOptimal(numCourses, prerequisites: list[list]):
+#     indegree = [0]*numCourses
+#     adjList = list(map(lambda _: [], indegree))
+#     for pair in prerequisites:
+#         indegree[pair[0]]+=1
+#         adjList[pair[1]].append(pair[0])
+#     count, stack = 0, []
+#     for i, x in enumerate(indegree):
+#         if x == 0: stack.append(i)
+#     while stack:
+#         popped = stack.pop()
+#         count+=1
+#         for i in adjList[popped]:
+#             indegree[i]-=1
+#             if indegree[i] == 0:
+#                 stack.append(i)
+#     return count == numCourses
+
+# print(canFinishOptimal(3, prerequisites))
