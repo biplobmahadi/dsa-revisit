@@ -45,22 +45,21 @@ def canFinishOptimalWithAdjList(numCourses, prerequisites: list[list]):
 
 print(canFinishOptimalWithAdjList(3, prerequisites))
 
-# def canFinishOptimal(numCourses, prerequisites: list[list]):
-#     indegree = [0]*numCourses
-#     adjList = list(map(lambda _: [], indegree))
-#     for pair in prerequisites:
-#         indegree[pair[0]]+=1
-#         adjList[pair[1]].append(pair[0])
-#     count, stack = 0, []
-#     for i, x in enumerate(indegree):
-#         if x == 0: stack.append(i)
-#     while stack:
-#         popped = stack.pop()
-#         count+=1
-#         for i in adjList[popped]:
-#             indegree[i]-=1
-#             if indegree[i] == 0:
-#                 stack.append(i)
-#     return count == numCourses
+def canFinishOptimal(numCourses, prerequisites: list[list]):
+    indegree = [0]*numCourses
+    for pair in prerequisites:
+        indegree[pair[0]]+=1
+    count, stack = 0, []
+    for i, x in enumerate(indegree):
+        if x == 0: stack.append(i)
+    while stack:
+        popped = stack.pop()
+        count+=1
+        for pair in prerequisites:
+            if popped == pair[1]:
+                indegree[pair[0]]-=1
+                if indegree[pair[0]] == 0:
+                    stack.append(pair[0])
+    return count == numCourses
 
-# print(canFinishOptimal(3, prerequisites))
+print(canFinishOptimal(3, prerequisites))
