@@ -26,3 +26,20 @@ times = [[1,2,1]]
 n = 2
 k = 2
 print(networkDelayTime(times, n, k))
+
+def networkTimeDelayBellman(times, n, k):
+    distances = [math.inf] * n
+    distances[k-1] = 0
+    for _ in range(n-1):
+        count = 0
+        for group in times:
+            total = distances[group[0]-1] + group[2]
+            if total < distances[group[1]-1]:
+                distances[group[1]-1] = total
+                count+=1
+        if count == 0: break
+    if math.inf in distances:
+        return -1
+    return max(distances)
+
+print(networkDelayTime(times, n, k))
