@@ -35,3 +35,17 @@ def minCostBottomUp(cost):
     return min(dp[n-1], dp[n-2])
 
 print(minCostBottomUp([1,100,1,1,1,100,1,1,100,1]))
+
+def minCostBottomUpOpti(cost):
+    n = len(cost)
+    if n<=1: return 0
+    dpOne = cost[0]
+    dpTwo = cost[1]
+    for i in range(2, n):
+        curr = cost[i] + min(dpOne, dpTwo)
+        dpOne = dpTwo
+        dpTwo = curr
+    return min(dpOne, dpTwo)
+
+print(minCostBottomUpOpti([1,100,1,1,1,100,1,1,100,1]))
+
