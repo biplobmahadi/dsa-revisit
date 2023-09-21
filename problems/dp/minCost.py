@@ -23,3 +23,15 @@ def minCostOpti(i, cost, memo):
     return memo[i]
 
 print(minCostClimbingStairsOpti([1,100,1,1,1,100,1,1,100,1]))
+
+def minCostBottomUp(cost):
+    n = len(cost)
+    if n<=1: return 0
+    dp = [None] * n
+    dp[0] = cost[0]
+    dp[1] = cost[1]
+    for i in range(2, n):
+        dp[i] = cost[i] + min(dp[i-1], dp[i-2])
+    return min(dp[n-1], dp[n-2])
+
+print(minCostBottomUp([1,100,1,1,1,100,1,1,100,1]))
