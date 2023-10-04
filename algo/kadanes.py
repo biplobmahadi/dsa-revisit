@@ -23,3 +23,20 @@ def kadanes(nums):
     return maxSum
 
 print(kadanes(nums))
+
+def slidingWindow(nums):
+    maxSum = nums[0]
+    maxL, maxR = 0, 0
+    L, current = 0, 0
+
+    for R in range(len(nums)):
+        if current < 0:
+            current = 0
+            L = R
+        current += nums[R]
+        if maxSum < current:
+            maxL, maxR = L, R
+            maxSum = current
+    return [maxL, maxR]
+
+print(slidingWindow(nums))
