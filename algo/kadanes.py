@@ -13,13 +13,13 @@ def brute(nums):
 
 print(brute(nums))
 
-# def kadanes(nums):
-#     maxSum = nums[0]
-#     current = 0
-#     for n in nums:
-#         current += n
-#         current = max(current, 0)
-#         maxSum = max(maxSum, current)
-#     return maxSum
+def kadanes(nums):
+    maxSum = nums[0]
+    current = 0
+    for n in nums:
+        current += n
+        current = max(current, 0)
+        maxSum = max(maxSum, current)
+    return maxSum
 
-# print(kadanes(nums))
+print(kadanes(nums))
