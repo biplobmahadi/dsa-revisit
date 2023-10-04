@@ -10,17 +10,17 @@ def bruteSliding(nums, k):
                 return True
     return False
 
-# def optimalSliding(nums, k):
-#     hashSet = set()
-#     l = 0
-#     for r in range(len(nums)):
-#         if r - l + 1 > k:
-#             hashSet.remove(nums[l])
-#             l += 1
-#         if nums[r] in hashSet:
-#             return True
-#         hashSet.add(nums[r])
-#     return False
+def optimalSliding(nums, k):
+    hashSet = set()
+    l = 0
+    for r in range(len(nums)):
+        if r - l + 1 > k:
+            hashSet.remove(nums[l])
+            l += 1
+        if nums[r] in hashSet:
+            return True
+        hashSet.add(nums[r])
+    return False
 
-# print(bruteSliding(nums, 2))
-# print(optimalSliding(nums, 2))
+print(bruteSliding(nums, 2))
+print(optimalSliding(nums, 2))
