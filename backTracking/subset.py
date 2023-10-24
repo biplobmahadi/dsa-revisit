@@ -13,19 +13,19 @@ def distinctInput(i, list):
 distinctInput(0, [])
 print(res)
 
-# arr2 = [2, 1, 2, 3]
-# res2 = []
-# arr2.sort()
-# def notDistinctInput(i, list):
-#     if i == len(arr2):
-#         res2.append(list.copy())
-#         return
-#     list.append(arr2[i])
-#     notDistinctInput(i+1, list)
-#     list.pop()
-#     while i+1 < len(arr2) and arr2[i] == arr2[i+1]:
-#         i+=1
-#     notDistinctInput(i+1, list)
+arr2 = [2, 1, 2, 3]
+res2 = []
+arr2.sort()
+def notDistinctInput(i, list):
+    if i == len(arr2):
+        res2.append(list.copy())
+        return
+    list.append(arr2[i])
+    notDistinctInput(i+1, list)
+    list.pop()
+    while i+1 < len(arr2) and arr2[i] == arr2[i+1]:
+        i+=1
+    notDistinctInput(i+1, list)
 
-# notDistinctInput(0, [])
-# print(res2)
+notDistinctInput(0, [])
+print(res2)
