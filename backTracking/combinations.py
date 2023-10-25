@@ -13,3 +13,20 @@ def solve1(i, list):
 
 solve1(1, [])
 print(res1)
+
+n, k = 4, 2
+res = []
+def solve2(i, arr):
+    if len(arr) == k:
+        res.append(arr.copy())
+        return
+    if i > n:
+        return
+    for j in range(i, n+1):
+        arr.append(j)
+        solve2(j+1, arr)
+        arr.pop()
+
+solve2(1, [])
+print(res)
+
