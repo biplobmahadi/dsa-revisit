@@ -23,4 +23,4 @@ grid = [
     [0, 1, 0, 0],
 ]
 
-print(dfs(grid, 0, 0))
+print(dfs(grid, 0, 0)) # O(4^m*n), O(m*n)
