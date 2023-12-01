@@ -24,3 +24,31 @@ grid = [
 ]
 
 print(dfs(grid, 0, 0)) # O(4^m*n), O(m*n)
+
+
+# find the min path lenght of same given question
+# bfs total level is the min len
+from collections import deque
+directions = [[0, 1], [0, -1], [1, 0], [-1, 0]]
+
+def bfs(grid):
+    l = 0
+    q = deque()
+    q.append((0,0))
+    grid[0][0] = 1
+
+    while q:
+        for _ in range(len(q)):
+            r, c = q.popleft()
+            if r == len(grid)-1 and c == len(grid[0])-1:
+                return l
+            for dr, dc in directions:
+                nwr = r+dr
+                nwc = c+dc
+                if (nwr>=0 and nwc>=0 and nwr<len(grid) and
+                    nwc<len(grid[0]) and grid[nwr][nwc]!=1):
+                    q.append((nwr, nwc))
+                    grid[nwr][nwc] = 1
+        l+=1
+
+print(bfs(grid))
