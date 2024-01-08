@@ -34,3 +34,20 @@ def recMemo(i, p, w, c, cache):
     return cache[i][c]
 
 print(topDownMemo([4, 4, 7, 1], [5, 2, 3, 1], 8))
+
+def bottomUp(profit, weight, capacity):
+    cache = [[0] * (capacity+1) for _ in range(len(profit))]
+
+    for c in range(capacity+1):
+        if c >= weight[0]:
+            cache[0][c] = profit[0]
+    for i in range(1, len(profit)):
+        for c in range(1, capacity+1):
+            skip = cache[i-1][c]
+            inc = 0
+            if c - weight[i] >= 0:
+                inc = profit[i] + cache[i-1][c - weight[i]]
+            cache[i][c] = max(skip, inc)
+    return cache[len(profit)-1][capacity]
+
+print(bottomUp([4, 4, 7, 1], [5, 2, 3, 1], 8))
