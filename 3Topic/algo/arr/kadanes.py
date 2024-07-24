@@ -12,3 +12,24 @@ def kadanes(arr):
     return maxSum
 
 print(kadanes(arr))
+
+
+def kadanes2(arr):
+    res = [0, 0]
+    maxSum = arr[0]
+    current = arr[0]
+    L = 0
+
+    for i, n in enumerate(arr[1:]):
+        current += n
+        if current < n:
+            L = i+1
+            current = n
+
+        if maxSum < current:
+            maxSum = current
+            res = [L, i+1]
+
+    return res
+
+print(kadanes2(arr2))
