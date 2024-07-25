@@ -11,3 +11,10 @@ def dfsPreorder(root):
     print(root.value)
     dfsPreorder(root.left)
     dfsPreorder(root.right)
+
+def dfsPostorder(root):
+    if not root:
+        return
+    dfsPostorder(root.left)
+    dfsPostorder(root.right)
+    print(root.value)
