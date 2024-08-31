@@ -11,3 +11,18 @@ def getPermutaions(i, arr):
     return res
 
 print(getPermutaions(0, [1, 2, 3, 4]))
+
+def permutation(arr):
+    curr = [[]]
+    
+    for n in arr:
+        newCurr = []
+        for p in curr:
+            for j in range(len(p)+1):
+                new = p.copy()
+                new.insert(j, n)
+                newCurr.append(new)
+        curr = newCurr
+    return curr
+
+print(permutation([1, 2, 3, 4]))
