@@ -12,8 +12,9 @@ class UnionFind():
     def findParent(self, node):
         p = self.parent[node]
         while p != self.parent[p]:
-            self.parent[p] = self.parent[self.parent[p]]
-            p = self.parent[p]
+            # self.parent[p] = self.parent[self.parent[p]]
+            # p = self.parent[p]
+            p = self.parent[self.parent[p]]
         return p
 
     def union(self, n1, n2):
