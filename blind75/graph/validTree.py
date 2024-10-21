@@ -20,3 +20,4 @@ class Solution:
         return len(visited) == n
     
 print(Solution.validTree(5, [[0, 1], [1, 2], [2, 3], [1, 3], [1, 4]]))
+print(Solution.validTree(2, [[0, 1]]))
