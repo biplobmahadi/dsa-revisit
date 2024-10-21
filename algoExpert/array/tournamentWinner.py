@@ -13,3 +13,19 @@ def tournamentWinner(competitions, results):
             count = val
             winner = key
     return winner
+
+
+HOME_TEAM_WIN = 1
+
+def tournamentWinner2(competitions, results):
+    currentBestTeam = ''
+    scores = {}
+
+    for i, (homeTeam, awayTeam) in enumerate(competitions):
+        result = results[i]
+        winningTeam = homeTeam if HOME_TEAM_WIN == result else awayTeam
+        scores[winningTeam] = scores.get(winningTeam, 0) + 3
+        if scores[winningTeam] > scores.get(currentBestTeam, 0):
+            currentBestTeam = winningTeam
+            
+    return currentBestTeam
