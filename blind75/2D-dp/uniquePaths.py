@@ -11,3 +11,14 @@ class Solution:
                 dp[r][c] = count
             return dp[r][c]
         return solve(0, 0)
+    
+class Solution2:
+    def uniquePaths(self, m: int, n: int) -> int:
+        dp = [1] * n
+        for _ in range(m-1):
+            currDp = [0] * n
+            currDp[n-1] = 1
+            for i in reversed(range(n-1)):
+                currDp[i] = currDp[i+1] + dp[i]
+            dp = currDp
+        return dp[0]
