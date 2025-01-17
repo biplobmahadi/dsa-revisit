@@ -14,3 +14,24 @@ class Solution:
             if low > height[i]:
                 res += low - height[i]
         return res
+    
+class Solution2:
+    def trap(self, height: List[int]) -> int:
+        if not height: return 0
+        maxLeft, maxRight = height[0], height[len(height)-1]
+        l, r = 0, len(height)-1
+        total = 0
+        while r > l:
+            if height[l] < height[r]:
+                diff = min(maxLeft, maxRight)
+                if diff > height[l]:
+                    total += diff - height[l]
+                l+= 1
+                maxLeft = max(maxLeft, height[l])
+            else:
+                diff = min(maxLeft, maxRight)
+                if diff > height[r]:
+                    total += diff - height[r]
+                r-= 1
+                maxRight = max(maxRight, height[r])
+        return total
