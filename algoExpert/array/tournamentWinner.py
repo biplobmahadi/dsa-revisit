@@ -31,7 +31,7 @@ def tournamentWinner2(competitions, results):
     return currentBestTeam
 
 
-def tournamentWinner2(competitions, results):
+def tournamentWinner3(competitions, results):
     res = {}
     for i in range(len(results)):
         home = competitions[i][0]
@@ -46,3 +46,16 @@ def tournamentWinner2(competitions, results):
             final = k
             total = v
     return final
+
+
+def tournamentWinnerLessTime(competitions, results):
+    res, best, score = {}, '', 0
+    for i in range(len(results)):
+        home = competitions[i][0]
+        away = competitions[i][1]
+        winner = home if results[i] else away
+        res[winner] = res.get(winner, 0) + 3
+        if score < res[winner]:
+            best = winner
+            score = res[winner]
+    return best
