@@ -29,3 +29,20 @@ def tournamentWinner2(competitions, results):
             currentBestTeam = winningTeam
             
     return currentBestTeam
+
+
+def tournamentWinner2(competitions, results):
+    res = {}
+    for i in range(len(results)):
+        home = competitions[i][0]
+        away = competitions[i][1]
+        if results[i]:
+            res[home] = res.get(home, 0) + 3
+        else:
+            res[away] = res.get(away, 0) + 3
+    final, total = '', 0
+    for k, v in res.items():
+        if total < v:
+            final = k
+            total = v
+    return final
