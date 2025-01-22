@@ -34,3 +34,18 @@ def smallestDifference2(arrayOne, arrayTwo):
             res = [one, two]
     return res
     
+def smallestDifference2(arrayOne, arrayTwo):
+    arrayOne.sort()
+    arrayTwo.sort()
+    diff, res, i, j = float('inf'), [], 0, 0
+    while i<len(arrayOne) and j<len(arrayTwo):
+        curr = abs(arrayOne[i]-arrayTwo[j])
+        if not curr: return [arrayOne[i], arrayTwo[j]]
+        if curr < diff:
+            diff = curr
+            res = [arrayOne[i], arrayTwo[j]]
+        if arrayOne[i] < arrayTwo[j]:
+            i+=1
+        else:
+            j+=1
+    return res
