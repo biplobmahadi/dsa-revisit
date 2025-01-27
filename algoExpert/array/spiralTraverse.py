@@ -20,3 +20,23 @@ def spiralTraverse(array):
         left+=1
         
     return res
+
+def spiralTraverse2(array):
+    t, b, l, r = 0, len(array)-1, 0, len(array[0])-1
+    res = []
+    while r>=l and b>=t:
+        for i in range(l, r+1):
+            res.append(array[t][i])
+        t+=1
+        for i in range(t, b+1):
+            res.append(array[i][r])
+        r-=1
+        if b<t or r<l:
+            break
+        for i in range(r, l-1, -1):
+            res.append(array[b][i])
+        b-=1
+        for i in range(b, t-1, -1):
+            res.append(array[i][l])
+        l+=1
+    return res
