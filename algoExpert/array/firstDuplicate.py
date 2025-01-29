@@ -15,3 +15,11 @@ def firstDuplicateValue(array):
             return n
         map.add(n)
     return -1
+
+def firstDuplicateValue(array):
+    for n in array:
+        absVal = abs(n)
+        if array[absVal-1] < 0:
+            return absVal
+        array[absVal-1] *= -1
+    return -1
