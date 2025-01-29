@@ -7,3 +7,11 @@ def firstDuplicateValue(array):
             return absValue
         array[mutateIdx] *= -1
     return -1
+
+def firstDuplicateValue(array):
+    map = set()
+    for n in array:
+        if n in map:
+            return n
+        map.add(n)
+    return -1
