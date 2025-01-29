@@ -9,3 +9,14 @@ def arrayOfProducts(array):
         res[i] *= postfix
         postfix *= array[i]
     return res
+
+def arrayOfProducts(array):
+    res = [1]*len(array)
+    pre, post = 1, 1
+    for i, n in enumerate(array):
+        res[i] = pre
+        pre *= n
+    for i in reversed(range(len(array))):
+        res[i] *= post
+        post *= array[i]
+    return res
