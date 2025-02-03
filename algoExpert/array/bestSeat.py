@@ -17,4 +17,21 @@ def bestSeat(seats):
         left = right
     return res
     
-    
+
+def bestSeat(seats):
+    if len(seats) < 3: return -1
+    res, gap = -1, 0
+    i = 1
+    while i < len(seats)-1:
+        if seats[i]:
+            i+= 1
+            continue
+        l = r = i
+        while r < len(seats)-1 and seats[r] == 0:
+            r+=1
+        if r-l > gap:
+            gap = r-l
+            res = l + ((r-l-1)//2)
+        i = r+1
+    return res
+
