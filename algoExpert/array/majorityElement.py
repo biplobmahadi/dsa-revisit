@@ -23,3 +23,15 @@ def majorityElementOptimal(array):
         else:
             count -= 1
     return res
+
+def majorityElement2(array):
+    count = 0
+    res = None
+    for n in array:
+        if count == 0:
+            res = n
+        if res == n: 
+            count+=1
+        else:
+            count-=1
+    return res
