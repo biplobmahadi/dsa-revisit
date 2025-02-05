@@ -19,3 +19,23 @@ def sweetAndSavory(dishes, target):
         else:
             sweetInx += 1
     return bestPair
+
+
+def sweetAndSavory2(dishes, target):
+    sweet = sorted([n for n in dishes if n<0], key=abs)
+    savory = sorted([n for n in dishes if n>0])
+    res = [0, 0]
+    near = float('inf')
+    i, j = 0, 0
+    while i < len(sweet) and j < len(savory):
+        total = sweet[i] + savory[j]
+        if total <= target:
+            diff = target - total
+            if diff < near:
+                res = [sweet[i], savory[j]]
+                near = diff
+            j+=1
+        else:
+            i+=1        
+    return res
+            
