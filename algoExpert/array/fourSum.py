@@ -16,3 +16,23 @@ def fourNumberSum(array, targetSum):
             total = array[i] + array[k]
             pairMap[total].append([array[i] , array[k]])
     return res
+
+
+def fourNumberSum(array, targetSum):
+    res = []
+    pairMap = {}
+    for i in range(1, len(array)-1):
+        for j in range(i+1, len(array)):
+            total = array[i]+array[j]
+            diff = targetSum - total
+            if diff in pairMap:
+                for val in pairMap[diff]:
+                    res.append(val + [array[i], array[j]])
+
+        for k in range(0, i):
+            total = array[k] + array[i]
+            if total in pairMap:
+                pairMap[total].append([array[k], array[i]])
+            else:
+                pairMap[total] = [[array[k], array[i]]]
+    return res
