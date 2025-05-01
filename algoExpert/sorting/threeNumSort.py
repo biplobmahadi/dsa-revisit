@@ -10,3 +10,18 @@ def threeNumberSort(array, order):
             i+=1
         
     return array
+
+
+def threeNumberSortOptimal(array, order):
+    i, f, l = 0, 0, len(array)-1
+    while i <= l:
+        if array[i] == order[0]:
+            array[i], array[f] = array[f], array[i]
+            f+=1
+            i+=1
+        elif array[i] == order[2]:
+            array[i], array[l] = array[l], array[i]
+            l-=1
+        else:
+            i+=1
+    return array
