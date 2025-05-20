@@ -16,3 +16,11 @@ class BinaryTree:
         self.value = value
         self.left = None
         self.right = None
+
+def nodeDepths2(root):
+    def solve(root, d):
+        if not root:
+            return 0
+        return d + solve(root.left, d+1) + solve(root.right, d+1)
+    return solve(root, 0)
+
