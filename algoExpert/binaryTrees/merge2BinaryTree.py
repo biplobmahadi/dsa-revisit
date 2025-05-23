@@ -17,3 +17,14 @@ def mergeBinaryTrees(tree1, tree2):
         n.right = solve(one.right if one else None, two.right if two else None)
         return n
     return solve(tree1, tree2)
+
+
+def mergeBinaryTrees2(tree1, tree2):
+    if not tree1:
+        return tree2
+    if not tree2:
+        return tree1
+    tree1.value += tree2.value
+    tree1.left = mergeBinaryTrees(tree1.left, tree2.left)
+    tree1.right = mergeBinaryTrees(tree1.right, tree2.right)
+    return tree1
